@@ -2,18 +2,340 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Hitesh Abichandani — ML Engineer, Research Scientist, Software Engineer. M.Sc. Physics candidate at Universität Hamburg.">
     <link rel="shortcut icon" href="new_icon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Hitesh Abichandani</title>
 </head>
 <body>
-    <div class="container">
-        <h2>Hello!</h2>
-		<p>I am <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
-        <div class="work">Take a look at some of my work <a href="my-work/my-work.html">here</a></div>
-	</div>
+
+    <!-- ===== NAV ===== -->
+    <nav id="nav">
+        <div class="nav-inner">
+            <span class="nav-logo mono">ha<span class="accent">.</span></span>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <canvas id="particle-canvas"></canvas>
+        <div class="hero-content">
+            <p class="hero-label mono">// open to opportunities · Sep 2026</p>
+            <h1>Hitesh<br>Abichandani</h1>
+            <p class="hero-roles mono">
+                <span class="typed-text"></span><span class="cursor">|</span>
+            </p>
+            <p class="hero-sub">
+                M.Sc. Physics · Universität Hamburg · Graduating Sep 2026<br>
+                5+ years industry · ML &amp; AI · Software Engineering · HPC
+            </p>
+            <div class="hero-links">
+                <a href="https://github.com/abichandani" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
+                <a href="https://www.linkedin.com/in/hiteshabichandani/" target="_blank" rel="noopener" class="btn-outline">LinkedIn</a>
+                <a href="https://stackoverflow.com/users/12420844/hitesh" target="_blank" rel="noopener" class="btn-outline">Stack Overflow</a>
+                <a href="#contact" class="btn-primary">Get in touch</a>
+            </div>
+        </div>
+        <div class="hero-scroll mono">scroll ↓</div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+        <div class="section-inner">
+            <h2 class="section-title"><span class="mono accent">01.</span> About</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I'm a software engineer turned physicist — or perhaps a physicist who writes a lot of code.
+                        With 5+ years in industry across Infosys, Amdocs, and Baloise, I've shipped Java backend services,
+                        built DevOps platforms, and worked on distributed systems at scale.
+                    </p>
+                    <p>
+                        Now I'm completing my M.Sc. in Physics at Universität Hamburg, with active research in
+                        gravitational wave detection and laser interferometry. I apply machine learning to physical sciences
+                        and work with HPC clusters (SLURM) daily — bridging rigorous physics with modern ML tooling.
+                    </p>
+                    <p>
+                        I'm looking for roles where deep engineering meets hard science: ML research, scientific computing,
+                        HPC infrastructure, or research software engineering at institutes like Max Planck, DESY, Helmholtz, or DLR.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-number mono">5+</span>
+                        <span class="stat-label">Years Industry</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number mono">3</span>
+                        <span class="stat-label">Companies</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number mono">Sep '26</span>
+                        <span class="stat-label">M.Sc. Graduation</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number mono">6</span>
+                        <span class="stat-label">Career Tracks</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+        <div class="section-inner">
+            <h2 class="section-title"><span class="mono accent">02.</span> Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3 class="skill-group-title">ML / AI</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">SciPy</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">Weights &amp; Biases</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Software Engineering</h3>
+                    <div class="tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">Bash</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Apache Kafka</span>
+                        <span class="tag">REST APIs</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Platform / DevOps</h3>
+                    <div class="tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">Jenkins</span>
+                        <span class="tag">AWS EC2</span>
+                        <span class="tag">CI/CD</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Scientific / HPC</h3>
+                    <div class="tags">
+                        <span class="tag">SLURM</span>
+                        <span class="tag">GPU clusters</span>
+                        <span class="tag">Finesse</span>
+                        <span class="tag">Signal Processing</span>
+                        <span class="tag">DFMI / ReDFMI</span>
+                        <span class="tag">Interferometry</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience">
+        <div class="section-inner">
+            <h2 class="section-title"><span class="mono accent">03.</span> Experience</h2>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Research Assistant — Gravitational Wave Physics</h3>
+                            <span class="timeline-date mono">2023 — present</span>
+                        </div>
+                        <p class="timeline-org">Universität Hamburg</p>
+                        <p class="timeline-desc">
+                            Active researcher in laser interferometry for next-generation gravitational wave detectors.
+                            Developing ML pipelines for signal processing and noise classification.
+                            Simulating optical systems with Finesse and running workloads on SLURM-managed HPC clusters.
+                        </p>
+                        <div class="tags small">
+                            <span class="tag">Python</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Finesse</span>
+                            <span class="tag">SLURM</span>
+                            <span class="tag">Signal Processing</span>
+                            <span class="tag">Interferometry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software / DevOps Engineer</h3>
+                            <span class="timeline-date mono">2021 — 2023</span>
+                        </div>
+                        <p class="timeline-org">Baloise Group</p>
+                        <p class="timeline-desc">
+                            Built and maintained CI/CD pipelines and cloud infrastructure for insurance-domain microservices.
+                            Containerised deployments with Docker and Kubernetes; managed Jenkins pipelines and AWS EC2 infrastructure.
+                        </p>
+                        <div class="tags small">
+                            <span class="tag">Docker</span>
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">Jenkins</span>
+                            <span class="tag">AWS EC2</span>
+                            <span class="tag">Java</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Engineer</h3>
+                            <span class="timeline-date mono">2019 — 2021</span>
+                        </div>
+                        <p class="timeline-org">Amdocs</p>
+                        <p class="timeline-desc">
+                            Developed Java backend services for telecom clients using microservices architecture.
+                            Built event-driven pipelines with Apache Kafka and maintained SQL data stores.
+                        </p>
+                        <div class="tags small">
+                            <span class="tag">Java</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Apache Kafka</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Microservices</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Engineer</h3>
+                            <span class="timeline-date mono">2018 — 2019</span>
+                        </div>
+                        <p class="timeline-org">Infosys</p>
+                        <p class="timeline-desc">
+                            Started career building enterprise Java applications and REST APIs.
+                            Gained foundation in software design patterns, agile delivery, and large-scale systems.
+                        </p>
+                        <div class="tags small">
+                            <span class="tag">Java</span>
+                            <span class="tag">REST APIs</span>
+                            <span class="tag">Agile</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+        <div class="section-inner">
+            <h2 class="section-title"><span class="mono accent">04.</span> Projects</h2>
+            <p class="section-sub">Selected work — more coming soon.</p>
+            <div class="projects-grid">
+
+                <div class="project-card placeholder">
+                    <div class="project-card-inner">
+                        <span class="project-domain mono">ML · Physics</span>
+                        <h3>Project Alpha</h3>
+                        <p>Details coming soon.</p>
+                        <div class="tags small">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">SciPy</span>
+                            <span class="tag">SLURM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card placeholder">
+                    <div class="project-card-inner">
+                        <span class="project-domain mono">Software Engineering</span>
+                        <h3>Project Beta</h3>
+                        <p>Details coming soon.</p>
+                        <div class="tags small">
+                            <span class="tag">Java</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Kafka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card placeholder">
+                    <div class="project-card-inner">
+                        <span class="project-domain mono">DevOps · HPC</span>
+                        <h3>Project Gamma</h3>
+                        <p>Details coming soon.</p>
+                        <div class="tags small">
+                            <span class="tag">Docker</span>
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+        <div class="section-inner contact-inner">
+            <h2 class="section-title"><span class="mono accent">05.</span> Contact</h2>
+            <p class="contact-lead">
+                Open to PhD positions, research roles, ML engineering, and scientific computing.<br>
+                Let's talk.
+            </p>
+            <form id="contact-form" class="contact-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cf-name" class="mono">Name</label>
+                        <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="cf-email" class="mono">Email</label>
+                        <input type="email" id="cf-email" name="email" placeholder="your@email.com" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cf-message" class="mono">Message</label>
+                    <textarea id="cf-message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="btn-submit" id="cf-submit">
+                        <span class="btn-submit-label">Send message</span>
+                    </button>
+                    <p class="form-status" id="form-status" aria-live="polite"></p>
+                </div>
+            </form>
+            <div class="contact-links">
+                <a href="https://github.com/abichandani" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/hiteshabichandani/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://stackoverflow.com/users/12420844/hitesh" target="_blank" rel="noopener">Stack Overflow</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <span class="mono">Hitesh Abichandani · 2026</span>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
