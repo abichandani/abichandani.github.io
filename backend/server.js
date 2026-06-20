@@ -1,31 +1,31 @@
 require('dotenv').config();
-const express    = require('express');
-const nodemailer = require('nodemailer');
-const cors       = require('cors');
+const express      = require('express');
+const cors         = require('cors');
+const { google }   = require('googleapis');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
+/* ---- Gmail OAuth2 client ---- */
+const oauth2Client = new google.auth.OAuth2(
+    process.env.OAUTH_CLIENT_ID,
+    process.env.OAUTH_CLIENT_SECRET,
+);
+oauth2Client.setCredentials({ refresh_token: process.env.OAUTH_REFRESH_TOKEN });
+const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
+
 /* ---- middleware ---- */
 app.use(express.json());
 app.use(cors({
-    origin: process.env.ALLOWED_ORIGIN || '*',
+    origin:  process.env.ALLOWED_ORIGIN || '*',
     methods: ['POST', 'GET'],
 }));
 
-/* ---- mailer ---- */
-const transporter = nodemailer.createTransport({
-    host:   'smtp.gmail.com',
-    port:   587,
-    secure: false,
-    requireTLS: true,
-    auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-    },
-});
-
 /* ---- helpers ---- */
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 function escapeHtml(str) {
     return String(str)
         .replace(/&/g, '&amp;')
@@ -34,8 +34,18 @@ function escapeHtml(str) {
         .replace(/"/g, '&quot;');
 }
 
-function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+function buildRawEmail({ from, to, replyTo, subject, html }) {
+    const lines = [
+        `From: ${from}`,
+        `To: ${to}`,
+        `Reply-To: ${replyTo}`,
+        `Subject: ${subject}`,
+        `MIME-Version: 1.0`,
+        `Content-Type: text/html; charset=UTF-8`,
+        ``,
+        html,
+    ];
+    return Buffer.from(lines.join('\r\n')).toString('base64url');
 }
 
 /* ---- routes ---- */
@@ -57,12 +67,11 @@ app.post('/contact', async (req, res) => {
     }
 
     try {
-        await transporter.sendMail({
-            from:     `"Portfolio Contact" <${process.env.SMTP_USER}>`,
-            to:       process.env.TO_EMAIL,
-            replyTo:  email.trim(),
-            subject:  `Portfolio message from ${name.trim()}`,
-            text:     `Name: ${name.trim()}\nEmail: ${email.trim()}\n\nMessage:\n${message.trim()}`,
+        const raw = buildRawEmail({
+            from:    `Portfolio Contact <${process.env.GMAIL_USER}>`,
+            to:      process.env.TO_EMAIL,
+            replyTo: email.trim(),
+            subject: `Portfolio message from ${name.trim()}`,
             html: `
                 <table style="font-family:sans-serif;font-size:14px;color:#1a1a2e;max-width:560px">
                   <tr><td><strong>Name:</strong></td><td>${escapeHtml(name)}</td></tr>
@@ -73,9 +82,10 @@ app.post('/contact', async (req, res) => {
             `,
         });
 
+        await gmail.users.messages.send({ userId: 'me', requestBody: { raw } });
         res.json({ success: true });
     } catch (err) {
-        console.error('[mailer error]', err.message);
+        console.error('[gmail error]', err.message);
         res.status(500).json({ error: 'Failed to send. Please try again later.' });
     }
 });
