@@ -200,7 +200,7 @@
     if (!form) return;
 
     // Replace with your Render URL once deployed. Use localhost for local testing.
-    const API_URL = 'https://your-app.onrender.com/contact';
+    const API_URL = 'https://abichandani-github-io.onrender.com/contact';
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
